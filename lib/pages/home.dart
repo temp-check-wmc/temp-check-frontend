@@ -13,14 +13,18 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[300],
-        title: const Text("Temp-Check", style: TextStyle(fontSize: 30),),
+        title: const Text("Temp-Check", style: TextStyle(color: Colors.white),),
         leading: const Text("Logo"), //TODO Create Logo
+        toolbarHeight: 75,
         actions: [
-          IconButton(onPressed: () {
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(onPressed: () {
 
-            Navigator.pushNamed(context, "/settings");
+              Navigator.pushNamed(context, "/settings");
 
-          }, icon: const Icon(Icons.plumbing, color: Colors.white,))
+            }, icon: const Icon(Icons.plumbing, color: Colors.white,), tooltip: "Settings",),
+          )
         ],
       ),
     );
