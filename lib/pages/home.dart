@@ -14,8 +14,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.blue[300],
         title: const Text("Temp-Check", style: TextStyle(color: Colors.white),),
-        leading: const Text("Logo"), //TODO Create Logo
+        leading: Image.asset("images/temp-check-logo.png", width: 300, height: 300,), //TODO Create Logo
         toolbarHeight: 75,
+        leadingWidth: 100,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
