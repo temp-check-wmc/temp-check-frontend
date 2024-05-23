@@ -24,4 +24,8 @@ class SensorData {
   @override
   int get hashCode => dateTime.hashCode;
 
+  @override
+  String toString() {
+    return "{Date: ${dateTime.toString()}, Temperature: $temperature, Humidity: $humdity, Pressure: $pressure}";
+  }
 }

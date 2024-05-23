@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temp_check_frontend/services/sensor_data_service.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required String title});
@@ -8,6 +9,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
+  @override
+  void initState() {
+    SensorDataService().getAll().then((value) => print(value));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
