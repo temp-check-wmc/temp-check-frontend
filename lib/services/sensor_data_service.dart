@@ -14,7 +14,7 @@ class SensorDataService {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = json.decode(response.body) ?? {};
       for (var element in data.entries) {
         var date = DateTime(int.parse(year), int.parse(month), int.parse(day), int.parse(hour), int.parse(element.key));
         sensorDataList.add(SensorData.fromJSON(element.value, date));
@@ -34,7 +34,7 @@ class SensorDataService {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = json.decode(response.body) ?? {};
       for (var element in data.entries) {
         sensorDataList.addAll(await getForHour(element.key, day, month, year));
       }
@@ -53,7 +53,7 @@ class SensorDataService {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = json.decode(response.body) ?? {};
       for (var element in data.entries) {
         sensorDataList.addAll(await getForDay(element.key, month, year));
       }
@@ -72,7 +72,7 @@ class SensorDataService {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = json.decode(response.body) ?? {};
       for (var element in data.entries) {
         sensorDataList.addAll(await getForMonth(element.key, year));
       }
@@ -91,7 +91,7 @@ class SensorDataService {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = json.decode(response.body) ?? {};
       for (var element in data.entries) {
         sensorDataList.addAll(await getForYear(element.key));
       }

@@ -2,16 +2,16 @@ class SensorData {
 
   late DateTime dateTime;
   late double temperature;  //Celsius
-  late double humdity;      // % in gramm/m3 air
+  late double humidity;      // % in gramm/m3 air
   late double pressure;     // Milibars
 
-  SensorData({required this.dateTime, required this.temperature, required this.humdity, required this.pressure});
+  SensorData({required this.dateTime, required this.temperature, required this.humidity, required this.pressure});
 
   factory SensorData.fromJSON(Map<String, dynamic> json, DateTime time) {
     return SensorData(
         dateTime: time,
         temperature: json['temperature'],
-        humdity: json['humidity'],
+        humidity: json['humidity'],
         pressure: json['pressure']);
   }
 
@@ -26,6 +26,6 @@ class SensorData {
 
   @override
   String toString() {
-    return "{Date: ${dateTime.toString()}, Temperature: $temperature, Humidity: $humdity, Pressure: $pressure}";
+    return "{Date: ${dateTime.toString()}, Temperature: $temperature, Humidity: $humidity, Pressure: $pressure}";
   }
 }
