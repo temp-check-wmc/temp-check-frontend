@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           backgroundColor: Colors.blue[300],
           title: const Text(
-            "Raspberry Pie Sensor Data",
+            "Temp-Check",
             style: TextStyle(color: Colors.white),
           ),
           leading: Image.asset(
@@ -92,6 +92,20 @@ class _HomeState extends State<Home> {
           toolbarHeight: 75,
           leadingWidth: 100,
           actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/compare");
+                },
+                icon: const Icon(
+                  Icons.compare,
+                  color: Colors.white,
+                ),
+                tooltip: "Compare",
+              ),
+            ),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(

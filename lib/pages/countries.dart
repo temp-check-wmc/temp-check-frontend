@@ -9,6 +9,9 @@ class Countries extends StatefulWidget {
 }
 
 class _CountriesState extends State<Countries> {
+  var onlyFavs = false;
+  var toDisplay = CountryService.countries;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +38,35 @@ class _CountriesState extends State<Countries> {
                 tooltip: "Settings",
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    if (onlyFavs) {
+                      toDisplay = CountryService.countries;
+                      onlyFavs = false;
+                    } else {
+                      toDisplay = CountryService.countries.where((element) => element.favorite).toSet();
+                      onlyFavs = true;
+                    }
+                    setState(() {
+
+                    });
+                  });
+                },
+                icon: Icon(
+                  onlyFavs ? Icons.favorite_border : Icons.favorite,
+                  color: Colors.white,
+                ),
+                tooltip: onlyFavs ? "Show All" : "Only Favorites",
+              ),
+            ),
           ],
         ),
         body: ListView(
-          children: CountryService.countries
+          children: toDisplay
               .map(
                 (country) => GestureDetector(
                   onTap: () => Navigator.pushNamed(context, "/detail", arguments: country.name),
