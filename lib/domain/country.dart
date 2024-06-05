@@ -2,9 +2,11 @@ class Country {
 
   late String name;
   late bool favorite;
+  late double avgTemp;
 
   Country(this.name) {
     favorite = false;
+    avgTemp = 0.0;
   }
 
   @override

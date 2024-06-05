@@ -96,6 +96,19 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(8.0),
               child: IconButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, "/difference");
+                },
+                icon: const Icon(
+                  Icons.difference_outlined,
+                  color: Colors.white,
+                ),
+                tooltip: "Show differences",
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                onPressed: () {
                   Navigator.pushNamed(context, "/compare");
                 },
                 icon: const Icon(

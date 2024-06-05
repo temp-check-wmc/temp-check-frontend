@@ -102,4 +102,10 @@ class SensorDataService {
 
     return sensorDataList;
   }
+
+  double calcAvgTemp(List<SensorData> data) {
+    double sum = data.map((element) => element.temperature).reduce((value, element) => value += element);
+    double lengthAsDouble = data.length as double;
+    return sum / lengthAsDouble;
+  }
 }
