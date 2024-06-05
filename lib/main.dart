@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:temp_check_frontend/pages/countries.dart';
+import 'package:temp_check_frontend/pages/country_detail.dart';
 import 'package:temp_check_frontend/pages/home.dart';
 import 'package:temp_check_frontend/pages/settings.dart';
 
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/" : (context) => const Home(title: "Home",),
         "/settings" : (context) => const Settings(title: "Settings"),
+        "/countries": (context) => const Countries(title: "Countries"),
+        "/detail" : (context) => const CountryDetail(title: "Detail"),
       },
     );
   }

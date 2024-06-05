@@ -3,13 +3,13 @@ import 'dart:convert';
 import '../domain/sensor_data.dart';
 import 'package:http/http.dart' as http;
 
-class SensorDataService {
+String dbUrl = "https://temp-check-4c71c-default-rtdb.europe-west1.firebasedatabase.app";
 
-  final String _dbUrl = "https://temp-check-4c71c-default-rtdb.europe-west1.firebasedatabase.app";
+class SensorDataService {
 
   Future<List<SensorData>> getForHour(String hour, String day, String month, String year) async {
     List<SensorData> sensorDataList = [];
-    var url = Uri.parse("$_dbUrl/$year/$month/$day/$hour.json");
+    var url = Uri.parse("$dbUrl/$year/$month/$day/$hour.json");
 
     var response = await http.get(url);
 
@@ -29,7 +29,7 @@ class SensorDataService {
 
   Future<List<SensorData>> getForDay(String day, String month, String year) async {
     List<SensorData> sensorDataList = [];
-    var url = Uri.parse("$_dbUrl/$year/$month/$day.json?shallow=true");
+    var url = Uri.parse("$dbUrl/$year/$month/$day.json?shallow=true");
 
     var response = await http.get(url);
 
@@ -48,7 +48,7 @@ class SensorDataService {
 
   Future<List<SensorData>> getForMonth(String month, String year) async {
     List<SensorData> sensorDataList = [];
-    var url = Uri.parse("$_dbUrl/$year/$month.json?shallow=true");
+    var url = Uri.parse("$dbUrl/$year/$month.json?shallow=true");
 
     var response = await http.get(url);
 
@@ -67,7 +67,7 @@ class SensorDataService {
 
   Future<List<SensorData>> getForYear(String year) async {
     List<SensorData> sensorDataList = [];
-    var url = Uri.parse("$_dbUrl/$year.json?shallow=true");
+    var url = Uri.parse("$dbUrl/$year.json?shallow=true");
 
     var response = await http.get(url);
 
@@ -86,7 +86,7 @@ class SensorDataService {
 
   Future<List<SensorData>> getAll() async {
     List<SensorData> sensorDataList = [];
-    var url = Uri.parse("$_dbUrl/.json?shallow=true");
+    var url = Uri.parse("$dbUrl/.json?shallow=true");
 
     var response = await http.get(url);
 
