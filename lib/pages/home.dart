@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:temp_check_frontend/pages/current_data.dart';
 import 'package:temp_check_frontend/services/country_service.dart';
 import 'package:temp_check_frontend/services/sensor_data_service.dart';
 
@@ -20,6 +21,7 @@ class _HomeState extends State<Home> {
   CountryService service = CountryService();
   List<String> modes = ["Day", "Week", "Month", "Year"];
   String currentMode = "Day";
+  SensorData lastData = SensorData(dateTime: DateTime.now(), temperature: 0.0, humidity: 0.0, pressure: 0.0);
 
   @override
   void initState() {
@@ -38,6 +40,7 @@ class _HomeState extends State<Home> {
             .toString())
         .then((value) {
       sensorData = value..sort((a, b) => a.dateTime.compareTo(b.dateTime));
+      lastData = sensorData.last;
       fixList();
       fixList();
     });
@@ -150,6 +153,7 @@ class _HomeState extends State<Home> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            CurrentData(humidity: lastData.humidity, temperature: lastData.temperature, pressure: lastData.pressure),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -297,6 +301,8 @@ class _HomeState extends State<Home> {
           .toString());
     }
 
+    lastData = sensorData.last;
+    print(lastData);
     fixList();
     fixList();
   }
