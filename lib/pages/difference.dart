@@ -55,7 +55,7 @@ class _DifferenceState extends State<Difference> {
           Expanded(
               child: Center(
                 child: Text(
-            "Todays average Temperature: ${avgTemperatrueDay.toStringAsFixed(2)}",
+            "Todays average Temperature:  ${avgTemperatrueDay.toStringAsFixed(2)}",
             style: const TextStyle(fontSize: 30),
           ),
               )),
